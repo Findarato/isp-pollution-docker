@@ -21,7 +21,7 @@ RUN pip3 install pyvirtualdisplay
 
 #download and modify original script
 RUN apk add --no-cache sed git
-RUN git clone https://github.com/essandess/isp-data-pollution.git
+RUN git clone https://github.com/Findarato/isp-data-pollution.git
 RUN mv isp-data-pollution/isp_data_pollution.py ./isp-data-pollution.py
 RUN rm -rf isp-data-pollution/
 RUN sed -i "s/gb_per_month\ =\ 100/gb_per_month\ =\ os.environ['gbpm']/g" isp-data-pollution.py
