@@ -1,4 +1,4 @@
-FROM python:3.9-rc-alpine3.11
+FROM python:3.7
 
 #install libraries for building pip libs 
 RUN apk update && apk upgrade
@@ -33,7 +33,7 @@ RUN apk del sed git make automake gcc g++ subversion
 
 #since on alpine we need tzdata
 RUN apk add --no-cache tzdata
-ENV TZ=Europe/Amsterdam
+ENV TZ=America/Chicago
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 ENTRYPOINT ["python3", "isp-data-pollution.py"]
