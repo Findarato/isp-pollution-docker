@@ -1,4 +1,5 @@
-FROM python:3.7-alpine
+# FROM python:3.7-alpine
+FROM python:3.9-rc-alpine3.11
 
 #install libraries for building pip libs 
 RUN apk update && apk upgrade
