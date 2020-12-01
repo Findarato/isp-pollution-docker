@@ -32,8 +32,9 @@ RUN sed -i "s/chrome_options\.add_argument('headless')/chrome_options\.add_argum
 RUN apk del sed git make automake gcc g++ subversion
 
 #since on alpine we need tzdata
-#RUN apk add --no-cache tzdata
-#ENV TZ=America/Chicago
-#RUN echo $TZ > /etc/timezone
+RUN apk add --no-cache tzdata
+ENV TZ=America/Chicago
+RUN echo $TZ > /etc/timezone
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 ENTRYPOINT ["python3", "isp-data-pollution.py"]
